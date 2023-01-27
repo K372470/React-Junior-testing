@@ -1,0 +1,13 @@
+body {
+  text-align: center;
+}
+
+.main_page {
+  margin: 5px;
+  font-size: medium;
+}
+
+.active_NavLink {
+  color: #3843cd;
+  scale: 1.2;
+}
