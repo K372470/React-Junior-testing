@@ -3,3 +3,5 @@ coverage/
 build/
 .vscode/
 .prettierrc
+.vs/
+public/scripts.bundle.*
