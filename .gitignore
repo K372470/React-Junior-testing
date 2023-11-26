@@ -4,4 +4,4 @@ build/
 .vscode/
 .prettierrc
 .vs/
-public/scripts.bundle.js
+public/

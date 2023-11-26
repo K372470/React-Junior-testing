@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Text } from '@chakra-ui/react';
-import { Data } from '../types';
-import { deleteTodo } from '../api';
+import { Data } from '../../types';
+import { deleteTodo } from '../../api';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';

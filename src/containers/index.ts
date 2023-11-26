@@ -1,5 +1,5 @@
 export * from './Home';
-export * from './Todos';
+export * from './todos/Todos';
 export * from './posts/PostDetails';
 export * from './posts/Posts';
 export * from './albums/Albums';

@@ -1,7 +1,7 @@
 import { ArrowBackIcon, SunIcon } from '@chakra-ui/icons';
 import { Button, ButtonGroup, Divider, useColorMode } from '@chakra-ui/react';
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 
 const ColorSwitcher: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -18,10 +18,6 @@ export const TopPanel = () => {
   return (
     <header>
       <ButtonGroup display="flex" fontSize="3xl" justifyContent="space-evenly" alignItems="center" padding="5px">
-        <Button variant="outline" onClick={backToPreviousPage} leftIcon={<ArrowBackIcon />}>
-          Go Back
-        </Button>
-
         <Button as={NavLink} color="teal.300" to="/" size="md">
           Home
         </Button>

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { getTodos } from '../api';
-import { selectTodos, changeTodoState } from '../redux-slices';
+import { getTodos } from '../../api';
+import { selectTodos, changeTodoState } from '../../redux-slices';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { NoDataText, Todo, CustomDroppable } from '../components';
+import { NoDataText, Todo, CustomDroppable } from '../../components';
 import { Flex } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 

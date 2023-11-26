@@ -16,7 +16,7 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import { Data } from '../../types';
 
-export const CustomEditableContent: React.FC<{
+export const CustomContentEditorForm: React.FC<{
   onSubmit;
   onClose;
   initialValues: Data.CombinedProperty;
@@ -34,21 +34,21 @@ export const CustomEditableContent: React.FC<{
             {props => (
               <Form>
                 {Object.entries(props.values)
-                  .filter(([key]) => !key.toLowerCase().includes('id'))
+                  .filter(([key]) => !key.toLowerCase().endsWith('id'))//id, userId etc
                   .map(
                     ([key, value]) =>
                       value && (
                         <Field name={key}>
                           {({ field }) => (
-                            <FormControl>
+                            <FormControl marginBottom='25px'>
                               <FormLabel>{key}</FormLabel>
-                              {value.length > 50 ? <Textarea minH={'80px'} {...field} /> : <Input {...field} />}
+                              {value.length > 50 ? <Textarea minH='200px' {...field} /> : <Input {...field} />}
                             </FormControl>
                           )}
                         </Field>
                       )
                   )}
-                <Divider margin="20px" />
+                <Divider />
                 <Button mt={4} margin="10px" colorScheme="teal" type="submit">
                   Submit
                 </Button>

@@ -1,5 +1,5 @@
 import { SimpleGrid, Button } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { getAlbums, getAlbumThumbnails } from '../../api';
 import { selectAlbums, selectAlbumThumbs } from '../../redux-slices';
 import { RepeatIcon } from '@chakra-ui/icons';
@@ -10,15 +10,16 @@ export const Albums: React.FC = () => {
   const dispatch = useDispatch();
   const albums = selectAlbums();
   const previewUrls = selectAlbumThumbs();
+  const albumsNotLoaded = useMemo(() => !albums || (albums && albums.length === 0), [albums]);
 
   useEffect(() => {
-    if (albums.length == 0) {
+    if (albumsNotLoaded) {
       refreshAlbums();
     }
   }, []);
 
   useEffect(() => {
-    if (previewUrls.length == 0 && albums.length > 0) {
+    if (previewUrls.length == 0 && !albumsNotLoaded) {
       dispatch(getAlbumThumbnails({ startIndex: albums[0].id, count: albums.length }));
     }
   }, [albums]);
@@ -27,7 +28,7 @@ export const Albums: React.FC = () => {
     dispatch(getAlbums({ id: 1 }));
   };
 
-  if (albums.length === 0) {
+  if (albumsNotLoaded) {
     return <NoDataText onClick={refreshAlbums} />;
   }
   return (
