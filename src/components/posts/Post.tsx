@@ -1,12 +1,12 @@
 import React from 'react';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { deletePost } from '../../api';
 import { CustomCard } from '../';
 import { Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-export const Post: React.FC<{ post: Data.Post }> = ({ post }) => {
+export const Post: React.FC<{ post: DataTypes.Post }> = ({ post }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const removeButtonClick = () => {

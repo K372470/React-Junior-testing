@@ -1,6 +1,6 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { deleteTodo, getTodos } from '../../api';
 import { createTodo, updateTodo } from '../../api/index';
 import { RootState } from '../RootStore';
@@ -11,11 +11,14 @@ export const changeTodoState = createAction<{ id: number; isEnabled: boolean }>(
 const todoList = createSlice({
   name: 'todoList',
   reducers: {},
-  initialState: { values: [] } as { values: Data.Todo[] },
+  initialState: { values: [] } as { values: DataTypes.Todo[] },
   extraReducers: builder => {
     builder
       .addCase(changeTodoState, (state, { payload }) => {
-        state.values[payload.id].completed = payload.isEnabled;
+        const todoIndex = state.values.findIndex(item => item.id === payload.id);
+        if (todoIndex !== -1) {
+          state.values[todoIndex].completed = payload.isEnabled;
+        }
       })
       .addCase(getTodos.fulfilled, (state, { payload }) => {
         state.values = payload;
@@ -34,5 +37,5 @@ const todoList = createSlice({
   },
 });
 
-export const selectTodos = () => useSelector<RootState, Data.Todo[]>(state => state.todoList.values);
+export const selectTodos = () => useSelector<RootState, DataTypes.Todo[]>(state => state.todoList.values);
 export default todoList.reducer;

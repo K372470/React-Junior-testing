@@ -3,7 +3,7 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Data } from '../types';
+import { DataTypes } from '../types';
 import { isObjectEmpty } from '../isObjectEmpty';
 
 type requestMethodType = 'get' | 'post' | 'patch' | 'delete';
@@ -33,17 +33,17 @@ export function createRequestAction<T>(apiEndpoint: string, method: requestMetho
 }
 
 // Posts
-export const getPosts = createRequestAction<Data.Post[]>('/users/~/posts', 'get');
-export const createPost = createRequestAction<Data.Post>('/posts', 'post');
-export const getPost = createRequestAction<Data.Post>('/posts/~', 'get');
-export const updatePost = createRequestAction<Data.Post>('/posts/~', 'patch');
-export const deletePost = createRequestAction<Data.Post>('/posts/~', 'delete');
+export const getPosts = createRequestAction<DataTypes.Post[]>('/users/~/posts', 'get');
+export const createPost = createRequestAction<DataTypes.Post>('/posts', 'post');
+export const getPost = createRequestAction<DataTypes.Post>('/posts/~', 'get');
+export const updatePost = createRequestAction<DataTypes.Post>('/posts/~', 'patch');
+export const deletePost = createRequestAction<DataTypes.Post>('/posts/~', 'delete');
 
 // Posts/Comments
-export const getComments = createRequestAction<Data.Comment[]>('/posts/~/comments', 'get');
-export const createComment = createRequestAction<Data.Comment>('/comments', 'post');
-export const updateComment = createRequestAction<Data.Comment>('/posts/~', 'patch');
-export const deleteComment = createRequestAction<Data.Comment>('/comments/~', 'delete');
+export const getComments = createRequestAction<DataTypes.Comment[]>('/posts/~/comments', 'get');
+export const createComment = createRequestAction<DataTypes.Comment>('/comments', 'post');
+export const updateComment = createRequestAction<DataTypes.Comment>('/posts/~', 'patch');
+export const deleteComment = createRequestAction<DataTypes.Comment>('/comments/~', 'delete');
 
 // Albums
 export const getAlbumThumbnails = createAsyncThunk<string[], { startIndex: number; count: number }>(
@@ -52,7 +52,7 @@ export const getAlbumThumbnails = createAsyncThunk<string[], { startIndex: numbe
     let result: string[] = [];
     for (let i = startIndex; i <= startIndex + count; i++) {
       let data = (
-        await axios<Data.Photo>({
+        await axios<DataTypes.Photo>({
           method: 'get',
           baseURL: BASE_URL,
           url: formatString('/photos/~', 1 + 50 * (i - 1)),
@@ -63,21 +63,21 @@ export const getAlbumThumbnails = createAsyncThunk<string[], { startIndex: numbe
     return result;
   }
 );
-export const getAlbums = createRequestAction<Data.Album[]>('/users/~/albums', 'get');
-export const createAlbum = createRequestAction<Data.Album>('/albums', 'post');
-export const getAlbum = createRequestAction<Data.Album>('/albums/~', 'get');
-export const updateAlbum = createRequestAction<Data.Album>('/albums/~', 'patch');
-export const deleteAlbum = createRequestAction<Data.Album>('/albums/~', 'delete');
+export const getAlbums = createRequestAction<DataTypes.Album[]>('/users/~/albums', 'get');
+export const createAlbum = createRequestAction<DataTypes.Album>('/albums', 'post');
+export const getAlbum = createRequestAction<DataTypes.Album>('/albums/~', 'get');
+export const updateAlbum = createRequestAction<DataTypes.Album>('/albums/~', 'patch');
+export const deleteAlbum = createRequestAction<DataTypes.Album>('/albums/~', 'delete');
 
 // Albums/Photos
-export const getPhotos = createRequestAction<Data.Photo[]>('/albums/~/photos', 'get');
-export const getPhoto = createRequestAction<Data.Photo>('/photos/~', 'get');
-export const createPhoto = createRequestAction<Data.Photo>('/albums', 'post');
-export const updatePhoto = createRequestAction<Data.Photo>('/albums/~', 'patch');
-export const deletePhoto = createRequestAction<Data.Photo>('/albums/~', 'delete');
+export const getPhotos = createRequestAction<DataTypes.Photo[]>('/albums/~/photos', 'get');
+export const getPhoto = createRequestAction<DataTypes.Photo>('/photos/~', 'get');
+export const createPhoto = createRequestAction<DataTypes.Photo>('/albums', 'post');
+export const updatePhoto = createRequestAction<DataTypes.Photo>('/albums/~', 'patch');
+export const deletePhoto = createRequestAction<DataTypes.Photo>('/albums/~', 'delete');
 
 // Todos
-export const getTodos = createRequestAction<Data.Todo[]>('/users/~/todos', 'get');
-export const createTodo = createRequestAction<Data.Todo>('/todos', 'post');
-export const updateTodo = createRequestAction<Data.Todo>('/todos/~', 'patch');
-export const deleteTodo = createRequestAction<Data.Todo>('/todos/~', 'delete');
+export const getTodos = createRequestAction<DataTypes.Todo[]>('/users/~/todos', 'get');
+export const createTodo = createRequestAction<DataTypes.Todo>('/todos', 'post');
+export const updateTodo = createRequestAction<DataTypes.Todo>('/todos/~', 'patch');
+export const deleteTodo = createRequestAction<DataTypes.Todo>('/todos/~', 'delete');

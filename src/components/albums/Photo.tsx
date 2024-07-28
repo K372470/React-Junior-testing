@@ -1,12 +1,12 @@
 import { Text, Image, Center, Button } from '@chakra-ui/react';
 import React from 'react';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { CustomCard } from './../custom/CustomCard';
 import { deletePhoto } from './../../api/index';
 import { useDispatch } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
 
-export const Photo: React.FC<{ photo: Data.Photo; editPhotoClick: (photoId: number) => void }> = ({ photo, editPhotoClick }) => {
+export const Photo: React.FC<{ photo: DataTypes.Photo; editPhotoClick: (photoId: number) => void }> = ({ photo, editPhotoClick }) => {
   const dispatch = useDispatch();
   const removeButtonClick = () => {
     dispatch(deletePhoto({ body: photo, id: photo.id }));

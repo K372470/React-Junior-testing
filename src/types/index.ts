@@ -1,6 +1,6 @@
 export type Id = number | string;
 
-export namespace Data {
+export namespace DataTypes {
   export type CombinedProperty = Comment | Todo | Post | Photo | Album;
 
   export interface Comment {

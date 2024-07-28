@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { createPhoto, updatePhoto, deletePhoto, getPhotos } from '../../api';
 import { RootState } from '../RootStore';
 
 const photoList = createSlice({
   name: 'photoList',
   reducers: {},
-  initialState: { values: [] } as { values: Data.Photo[] },
+  initialState: { values: [] } as { values: DataTypes.Photo[] },
   extraReducers: builder => {
     builder.addCase(getPhotos.fulfilled, (state, { payload }) => {
       state.values = payload;
@@ -26,5 +26,5 @@ const photoList = createSlice({
   },
 });
 
-export const selectPhotos = () => useSelector<RootState, Data.Photo[]>(state => state.albums.currentPhotos.values);
+export const selectPhotos = () => useSelector<RootState, DataTypes.Photo[]>(state => state.albums.currentPhotos.values);
 export default photoList.reducer;

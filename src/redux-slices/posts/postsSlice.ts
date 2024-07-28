@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { getPosts, deletePost, updatePost, createPost } from '../../api';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { RootState } from '../RootStore';
 
 //@ts-ignore: ts(2345)
 const postList = createSlice({
   name: 'postList',
   reducers: {},
-  initialState: { values: [] } as { values: Data.Post[] },
+  initialState: { values: [] } as { values: DataTypes.Post[] },
   extraReducers: builder => {
     builder.addCase(getPosts.fulfilled, (state, { payload }) => {
       state.values = payload;
@@ -27,5 +27,5 @@ const postList = createSlice({
   },
 });
 
-export const selectPosts = () => useSelector<RootState, Data.Post[]>(state => state.posts.postList.values);
+export const selectPosts = () => useSelector<RootState, DataTypes.Post[]>(state => state.posts.postList.values);
 export default postList.reducer;

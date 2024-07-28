@@ -14,12 +14,12 @@ import {
 } from '@chakra-ui/react';
 import { Field, Form, Formik } from 'formik';
 import React from 'react';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 
 export const CustomContentEditorForm: React.FC<{
   onSubmit;
   onClose;
-  initialValues: Data.CombinedProperty;
+  initialValues: DataTypes.CombinedProperty;
   isOpen;
 }> = ({ onSubmit, onClose, initialValues, isOpen }) => {
   if (!isOpen) return null;

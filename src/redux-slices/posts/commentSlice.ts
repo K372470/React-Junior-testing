@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { createComment, updateComment, deleteComment, getComments } from '../../api';
 import { RootState } from '../RootStore';
 
 const commentList = createSlice({
   name: 'commentList',
   reducers: {},
-  initialState: { values: [] } as { values: Data.Comment[] },
+  initialState: { values: [] } as { values: DataTypes.Comment[] },
   extraReducers: builder => {
     builder.addCase(getComments.fulfilled, (state, { payload }) => {
       state.values = payload;
@@ -26,5 +26,5 @@ const commentList = createSlice({
   },
 });
 
-export const selectComments = () => useSelector<RootState, Data.Comment[]>(state => state.posts.currentComments.values);
+export const selectComments = () => useSelector<RootState, DataTypes.Comment[]>(state => state.posts.currentComments.values);
 export default commentList.reducer;

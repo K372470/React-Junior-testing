@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { deleteAlbum, getAlbums } from '../../api';
 import { createAlbum, updateAlbum } from '../../api/index';
 import { getAlbumThumbnails } from './../../api/index';
@@ -9,7 +9,7 @@ import { RootState } from '../RootStore';
 const albumList = createSlice({
   name: 'albumList',
   reducers: {},
-  initialState: { albums: [] as Data.Album[], thumbPhotos: [] as string[] },
+  initialState: { albums: [] as DataTypes.Album[], thumbPhotos: [] as string[] },
   extraReducers: builder => {
     builder.addCase(getAlbums.fulfilled, (state, { payload }) => {
       state.albums = payload;
@@ -31,6 +31,6 @@ const albumList = createSlice({
     });
   },
 });
-export const selectAlbums = () => useSelector<RootState, Data.Album[]>(state => state.albums.albumList.albums);
+export const selectAlbums = () => useSelector<RootState, DataTypes.Album[]>(state => state.albums.albumList.albums);
 export const selectAlbumThumbs = () => useSelector<RootState, string[]>(state => state.albums.albumList.thumbPhotos);
 export default albumList.reducer;

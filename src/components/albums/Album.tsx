@@ -1,5 +1,5 @@
 import React from 'react';
-import { Data } from '../../types';
+import { DataTypes } from '../../types';
 import { deleteAlbum } from '../../api';
 import { Center, Image } from '@chakra-ui/react';
 import { MoonLoader } from 'react-spinners';
@@ -7,7 +7,7 @@ import { CustomCard } from '../custom/CustomCard';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-export const Album: React.FC<{ album: Data.Album; previewUrl?: string }> = ({ album, previewUrl }) => {
+export const Album: React.FC<{ album: DataTypes.Album; previewUrl?: string }> = ({ album, previewUrl }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
