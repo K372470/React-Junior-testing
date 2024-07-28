@@ -1,7 +1,7 @@
 import { Box, Center, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { getComments, updateComment } from '../../api';
-import { CustomEditableContent as CustomEditor, NoDataText, Comment } from '../';
+import { CustomModalForm as CustomEditor, NoDataText, Comment } from '../';
 import { useDispatch } from 'react-redux';
 import { AnyAction } from '@reduxjs/toolkit';
 import { selectComments } from './../../redux-slices/';

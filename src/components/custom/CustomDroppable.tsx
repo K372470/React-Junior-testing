@@ -1,11 +1,9 @@
 import { Box, Divider, Heading } from '@chakra-ui/react';
 import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
+import { capitalizeFirstLetter } from './utils';
 
 export const CustomDroppable: React.FC<{ children; id: string }> = ({ children, id }) => {
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
   return (
     <Droppable droppableId={id}>
       {provided => (

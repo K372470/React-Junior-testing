@@ -1,42 +1,41 @@
-import { ArrowBackIcon, SunIcon } from '@chakra-ui/icons';
-import { Button, ButtonGroup, Divider, useColorMode } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { Button, ButtonGroup, Divider, SystemStyleObject, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './TopPanel.css';
 
-const ColorSwitcher: React.FC = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <Button onClick={toggleColorMode} rightIcon={<SunIcon />}>
-      Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
-    </Button>
-  );
+const BUTTON_STYLE = 'ghost';
+const BUTTON_COLOR = 'teal.300';
+const ACTIVE_LINK_STYLE: SystemStyleObject = {
+  fontWeight: 'bolder',
 };
 
 export const TopPanel = () => {
-  const navigate = useNavigate();
-  const backToPreviousPage = () => navigate(-1);
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <header>
-      <ButtonGroup display="flex" fontSize="3xl" justifyContent="space-evenly" alignItems="center" padding="5px">
-        <Button as={NavLink} color="teal.300" to="/" size="md">
+    <header style={{ marginBottom: '10px' }}>
+      <ButtonGroup display="flex" fontSize="4xl" justifyContent="space-evenly" alignItems="center">
+        <Button as={NavLink} variant={BUTTON_STYLE} to="/" color={BUTTON_COLOR} _activeLink={ACTIVE_LINK_STYLE}>
           Home
         </Button>
 
-        <Button as={NavLink} color="teal.300" to="/posts" size="md">
+        <Button as={NavLink} variant={BUTTON_STYLE} to="/posts" color={BUTTON_COLOR} _activeLink={ACTIVE_LINK_STYLE}>
           Posts
         </Button>
 
-        <Button as={NavLink} color="teal.300" to="/albums" size="md">
+        <Button as={NavLink} variant={BUTTON_STYLE} to="/albums" color={BUTTON_COLOR} _activeLink={ACTIVE_LINK_STYLE}>
           Albums
         </Button>
 
-        <Button as={NavLink} color="teal.300" to="/todo" size="md">
+        <Button as={NavLink} variant={BUTTON_STYLE} to="/todo" color={BUTTON_COLOR} _activeLink={ACTIVE_LINK_STYLE}>
           Tasks
         </Button>
 
-        <ColorSwitcher />
+        <Button onClick={toggleColorMode} variant={BUTTON_STYLE}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
       </ButtonGroup>
-      <Divider h="2px" width="100%" marginBottom="5px" background="black" />
+      <Divider />
     </header>
   );
 };

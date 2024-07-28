@@ -6,7 +6,7 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 
-export const Todo: React.FC<{ todo: DataTypes.Todo, index: number }> = ({ todo, index }) => {
+export const Todo: React.FC<{ todo: DataTypes.Todo; index: number }> = ({ todo, index }) => {
   const dispatch = useDispatch();
   const removeButtonClick = () => {
     dispatch(deleteTodo({ body: todo, id: todo.id }));
@@ -36,7 +36,7 @@ export const Todo: React.FC<{ todo: DataTypes.Todo, index: number }> = ({ todo, 
           <Button variant="outline" marginRight="20px" onClick={removeButtonClick} colorScheme="red">
             <DeleteIcon w="15px" />
           </Button>
-          <Text fontSize='xs' margin="5px" opacity={0.6}>
+          <Text fontSize="xs" margin="5px" opacity={0.6}>
             {index + 1}
           </Text>
         </Box>

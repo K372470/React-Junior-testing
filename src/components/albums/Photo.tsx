@@ -1,4 +1,4 @@
-import { Text, Image, Center, Button } from '@chakra-ui/react';
+import { Text, Image, Center, Button, Flex } from '@chakra-ui/react';
 import React from 'react';
 import { DataTypes } from '../../types';
 import { CustomCard } from './../custom/CustomCard';
@@ -16,11 +16,11 @@ export const Photo: React.FC<{ photo: DataTypes.Photo; editPhotoClick: (photoId:
   };
   return (
     <CustomCard detailsClick={() => editPhotoClick(photo.id)} title={photo.title} onDeleteClick={removeButtonClick}>
-      <Center>
-        <Button borderRadius="lg" padding="10px" variant="outline" h="160px" onClick={onImageClick} cursor={'grab'}>
+      <Center flexDirection="column">
+        <Button borderRadius="lg" padding="10px" variant="outline" h="170px" onClick={onImageClick} cursor="grab">
           <Image src={photo.thumbnailUrl} fallback={<BeatLoader />} h="150px" />
-          Click to open detailed
         </Button>
+        <Text>Click to open detailed</Text>
       </Center>
     </CustomCard>
   );

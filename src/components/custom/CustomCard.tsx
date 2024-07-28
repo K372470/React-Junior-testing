@@ -2,12 +2,19 @@ import { DeleteIcon } from '@chakra-ui/icons';
 import { Button, Card, CardBody, CardFooter, Heading, ButtonGroup, Divider, Center } from '@chakra-ui/react';
 import React from 'react';
 
+const MAXIMUM_LENGTH = 40;
+
 export const CustomCard: React.FC<{ onDeleteClick: VoidFunction; detailsClick?: VoidFunction; children; title }> = ({
   children: body,
   detailsClick,
   onDeleteClick,
   title,
 }) => {
+  const trimedTitle = (title: string | null) => {
+    if (title) {
+      return title.length > MAXIMUM_LENGTH ? title.substring(0, MAXIMUM_LENGTH - 1) + '...' : title;
+    }
+  };
   const onDeleteButtonClick = () => {
     if (confirm('You Will delete 1 file\n You sure?')) {
       return onDeleteClick();
@@ -18,7 +25,7 @@ export const CustomCard: React.FC<{ onDeleteClick: VoidFunction; detailsClick?: 
     <Card className="post" variant="outline" display="flex" borderWidth="3px">
       <CardBody h="300px">
         <Heading size="md" margin="10px" h="80px">
-          {title}
+          {trimedTitle(title)}
           <Center>
             <Divider variant="dashed" borderColor="blue.200" w="150px" margin="5px" borderWidth="2px" />
           </Center>

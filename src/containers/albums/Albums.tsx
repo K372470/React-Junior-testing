@@ -1,9 +1,8 @@
-import { SimpleGrid, Button } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect, useMemo } from 'react';
 import { getAlbums, getAlbumThumbnails } from '../../api';
 import { selectAlbums, selectAlbumThumbs } from '../../redux-slices';
-import { RepeatIcon } from '@chakra-ui/icons';
-import { NoDataText, Album } from '../../components';
+import { NoDataText, Album, Toolbar } from '../../components';
 import { useDispatch } from 'react-redux';
 
 export const Albums: React.FC = () => {
@@ -33,9 +32,7 @@ export const Albums: React.FC = () => {
   }
   return (
     <>
-      <Button leftIcon={<RepeatIcon />} onClick={refreshAlbums}>
-        Refresh
-      </Button>
+      <Toolbar onRefreshButtonClick={refreshAlbums} onAddNewButtonClick={undefined} />
       <SimpleGrid className="Album_list" columns={3} spacing="4" margin="10px">
         {albums.map(album => (
           <Album album={album} previewUrl={previewUrls[album.id - 1] ?? undefined} />

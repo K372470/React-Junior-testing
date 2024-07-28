@@ -5,6 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 import rootStore from './redux-slices/RootStore';
 import { App } from './App';
+import './index.css';
 
 ReactDOM.render(
   <BrowserRouter>

@@ -9,10 +9,8 @@ import { isObjectEmpty } from '../isObjectEmpty';
 type requestMethodType = 'get' | 'post' | 'patch' | 'delete';
 const BASE_URL: string = 'https://jsonplaceholder.typicode.com/';
 export const formatString = (str: string, replacePattern?: any) => {
-  if (replacePattern)
-    return str.replace('~', replacePattern.toString());
-  else
-    return str;
+  if (replacePattern) return str.replace('~', replacePattern.toString());
+  else return str;
 };
 
 export function createRequestAction<T>(apiEndpoint: string, method: requestMethodType) {

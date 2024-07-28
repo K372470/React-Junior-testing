@@ -1,10 +1,11 @@
 import { Box, Center, Divider, Heading, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { getPhotos, updatePhoto } from '../../api';
-import { CustomEditableContent as CustomEditor, NoDataText } from '../';
+import { CustomModalForm as CustomEditor, CustomForm, NoDataText } from '../';
 import { useDispatch } from 'react-redux';
 import { Photo } from './Photo';
 import { selectPhotos } from './../../redux-slices';
+import { CustomModalForm } from '../custom/CustomModalForm';
 
 export const Photos: React.FC<{ albumId: number }> = ({ albumId: postId }) => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export const Photos: React.FC<{ albumId: number }> = ({ albumId: postId }) => {
           ))}
         </SimpleGrid>
 
-        <CustomEditor isOpen={editedPhoto > -1} onSubmit={onEditSubmit} onClose={() => setEditedPhoto(-1)} initialValues={photos[editedPhoto]} />
+        <CustomModalForm isOpen={editedPhoto > -1} onClose={() => setEditedPhoto(-1)} initialValues={photos[editedPhoto]} onSubmit={onEditSubmit} />
       </Box>
     );
   }
