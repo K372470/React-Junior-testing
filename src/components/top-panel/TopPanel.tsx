@@ -8,6 +8,7 @@ const BUTTON_STYLE = 'ghost';
 const BUTTON_COLOR = 'teal.300';
 const ACTIVE_LINK_STYLE: SystemStyleObject = {
   fontWeight: 'bolder',
+  textDecoration: 'underline'
 };
 
 export const TopPanel = () => {
