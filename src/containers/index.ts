@@ -1,4 +1,3 @@
-export * from './Home';
 export * from './todos/Todos';
 export * from './posts/PostDetails';
 export * from './posts/Posts';

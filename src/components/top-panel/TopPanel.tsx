@@ -16,10 +16,6 @@ export const TopPanel = () => {
   return (
     <header style={{ marginBottom: '10px' }}>
       <ButtonGroup display="flex" fontSize="4xl" justifyContent="space-evenly" alignItems="center">
-        <Button as={NavLink} variant={BUTTON_STYLE} to="/" color={BUTTON_COLOR} _activeLink={ACTIVE_LINK_STYLE}>
-          Home
-        </Button>
-
         <Button as={NavLink} variant={BUTTON_STYLE} to="/posts" color={BUTTON_COLOR} _activeLink={ACTIVE_LINK_STYLE}>
           Posts
         </Button>
