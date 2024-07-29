@@ -29,7 +29,7 @@ export const Photos: React.FC<{ albumId: number }> = ({ albumId: postId }) => {
         <Center>
           <Heading>Photos</Heading>
         </Center>
-        <Divider margin="8px" />
+        
 
         <SimpleGrid marginBottom="10px" spacing="4" margin="10px" columns={3} className="photos">
           {photos.map(photo => (

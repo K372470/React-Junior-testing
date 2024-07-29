@@ -28,7 +28,6 @@ export const Comments: React.FC<{ postId: number }> = ({ postId }) => {
         <Center>
           <Heading>Comments</Heading>
         </Center>
-        <Divider margin="8px" />
 
         <SimpleGrid marginBottom="10px" spacing="4" margin="10px" columns={2} className="comments">
           {comments.map(comment => (
